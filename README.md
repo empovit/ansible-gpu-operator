@@ -49,7 +49,7 @@ Deploying on an OpenShift cluster with physical GPUs:
 ```yaml
     - hosts: localhost
       roles:
-         - name: empovit.gpu_operator
+         - role: empovit.gpu_operator
            vars:
               openshift_api_vip: api.gpu-cluster.redhat.com
               kubeconfig: /home/totoro/kubeconfig-gpu
@@ -60,7 +60,7 @@ A cluster with a vGPU:
 ```yaml
     - hosts: localhost
       roles:
-         - name: empovit.gpu_operator
+         - role: empovit.gpu_operator
            vars:
               gpu_type: vgpu
               openshift_api_vip: api.gpu-cluster.redhat.com
@@ -73,4 +73,4 @@ A cluster with a vGPU:
 License
 -------
 
-Apache 2.0
+Apache-2.0
