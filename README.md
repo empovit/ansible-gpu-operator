@@ -16,15 +16,15 @@ This role uses [kubernetes.core.k8s](https://docs.ansible.com/ansible/latest/col
 Role Variables
 --------------
 
-* `gpu_type` (optional) - physical (`gpu`, the default) or virtual (`vgpu`).
-* `gpu_operator_channel` (optional) - channel to install the GPU Operator from, by default `v1.10`.
-* `openshift_api_vip` - API VIP or DNS name of the OpenShift cluster you want to install the GPU Operator on, must be reachable from the machine that runs the role.
-* `kubeconfig` - full path to a kubeconfig file, including the file name.
-* `ngc_api_key` (required when `gpu_type` is `vgpu`) - NVIDIA NGC catalog API key for pulling driver and operator images.
-* `ngc_email` (required when `gpu_type` is `vgpu`) -
-email address used with NVIDIA NGC catalog.
-* `nls_client_token` (required when `gpu_type` is `vgpu`) -
-NVIDIA license system (NLS) token for vGPU guest driver.
+Parameter | Description | Required | Default Value
+----|----|----|----
+gpu_type              | Physical (`gpu`) or virtual (`vgpu`) GPU | Optional | `gpu`
+gpu_operator_channel  | Channel to install the GPU Operator from | Optional | `v1.10`
+openshift_api_vip     | API VIP or DNS name of the OpenShift cluster you want to install the GPU Operator on, must be reachable from the machine that runs the role | Required
+kubeconfig            | Full path to a kubeconfig file, including the file name | Required
+ngc_api_key           | NVIDIA NGC catalog API key for pulling driver and operator images | Required when `gpu_type` is `vgpu`
+ngc_email             | Email address used with NVIDIA NGC catalog | Required when `gpu_type` is `vgpu`
+nls_client_token      | NVIDIA license system (NLS) token for vGPU guest driver | Required when `gpu_type` is `vgpu`
 
 
 Installing
@@ -73,4 +73,4 @@ A cluster with a vGPU:
 License
 -------
 
-Apache-2.0
+[Apache-2.0](LICENSE)
