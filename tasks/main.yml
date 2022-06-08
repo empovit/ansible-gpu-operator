@@ -55,7 +55,8 @@
     host: "https://{{ openshift_api_vip }}:6443"
     kubeconfig: "{{ kubeconfig }}"
     state: present
-    src: gpu-operator.yaml
+    template:
+      - gpu-operator.yaml.j2
     validate_certs: false
 
 - name: Set NGC pull secret auth
