@@ -5,17 +5,16 @@ argument_specs:
 
       gpu_type:
         type: "str"
-        description: "GPU type - physical (GPU) or virtual (vGPU)"
         choices:
           - gpu
           - vgpu
         default: gpu
+        description: "GPU type - physical (GPU) or virtual (vGPU)"
 
       gpu_operator_channel:
         type: "str"
-        required: false
-        description: "Channel to install the GPU Operator from"
         default: "v1.10"
+        description: "Channel to install the GPU Operator from"
 
       openshift_api_vip:
         type: "str"
