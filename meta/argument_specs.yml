@@ -1,0 +1,43 @@
+---
+argument_specs:
+  main:
+    options:
+
+      gpu_type:
+        type: "str"
+        description: "GPU type - physical (GPU) or virtual (vGPU)"
+        choices:
+          - gpu
+          - vgpu
+        default: gpu
+
+      gpu_operator_channel:
+        type: "str"
+        required: false
+        description: "Channel to install the GPU Operator from"
+        default: "v1.10"
+
+      openshift_api_vip:
+        type: "str"
+        required: true
+        description: "Publicly accessible API VIP or DNS name of an OpenShift cluster"
+
+      kubeconfig:
+        type: "str"
+        required: true
+        description: "Full path to a kubeconfig file, including the file name"
+
+      ngc_api_key:
+        type: "str"
+        required: false
+        description: "NVIDIA NGC catalog API key for pulling images in case of vGPU"
+
+      ngc_email:
+        type: "str"
+        required: false
+        description: "Email used with NVIDIA NGC catalog for pulling images in case of vGPU"
+
+      nls_client_token:
+        type: "str"
+        required: false
+        description: "NVIDIA license system (NLS) token for vGPU guest driver"
