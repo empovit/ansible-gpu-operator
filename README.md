@@ -30,7 +30,7 @@ NVIDIA license system (NLS) token for vGPU guest driver.
 Installing
 ----------------
 
-The role can be installed individually `ansible-galaxy install role https://github.com/empovit/ansible-gpu-operator/issues` or as part of a _requirements.yml_ file:
+Install the role using a _requirements.yml_ file:
 
 ```yaml
 ---
@@ -39,7 +39,7 @@ roles:
     src: https://github.com/empovit/ansible-gpu-operator
 ```
 
-using `ansible-galaxy install -r requirements.yml`
+by running `ansible-galaxy install -r requirements.yml`
 
 Example Playbook
 ----------------
