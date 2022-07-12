@@ -29,6 +29,8 @@
       status: "True"
       reason: MinimumReplicasAvailable
     validate_certs: false
+  register: _nfd_operator_result
+  failed_when: not _nfd_operator_result.get("resources")
 
 - name: Create NFD instance
   kubernetes.core.k8s:
@@ -49,6 +51,8 @@
       type: Available
       status: "True"
     validate_certs: false
+  register: _nfd_instance_result
+  failed_when: not _nfd_instance_result.get("resources")
 
 - name: Install GPU operator
   kubernetes.core.k8s:
@@ -89,6 +93,8 @@
       status: "True"
       reason: MinimumReplicasAvailable
     validate_certs: false
+  register: _gpu_operator_result
+  failed_when: not _gpu_operator_result.get("resources")
 
 - name: Deploy GPU cluster policy
   kubernetes.core.k8s:
@@ -125,6 +131,8 @@
     wait_timeout: 300
     wait_sleep: 30
     validate_certs: false
+  register: _cuda_validator_result
+  failed_when: not _cuda_validator_result.get("resources")
 
 - name: Wait for device plugin validator to complete
   kubernetes.core.k8s_info:
@@ -141,3 +149,5 @@
     wait_timeout: 300
     wait_sleep: 30
     validate_certs: false
+  register: _device_plugin_validator_result
+  failed_when: not _device_plugin_validator_result.get("resources")
