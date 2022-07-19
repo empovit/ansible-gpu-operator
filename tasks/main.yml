@@ -28,6 +28,8 @@
       type: Available
       status: "True"
       reason: MinimumReplicasAvailable
+    wait_timeout: 600
+    wait_sleep: 30
     validate_certs: false
   register: _nfd_operator_result
   failed_when: not _nfd_operator_result.get("resources")
@@ -50,6 +52,8 @@
     wait_condition:
       type: Available
       status: "True"
+    wait_timeout: 600
+    wait_sleep: 30
     validate_certs: false
   register: _nfd_instance_result
   failed_when: not _nfd_instance_result.get("resources")
@@ -92,6 +96,8 @@
       type: Available
       status: "True"
       reason: MinimumReplicasAvailable
+    wait_timeout: 600
+    wait_sleep: 30
     validate_certs: false
   register: _gpu_operator_result
   failed_when: not _gpu_operator_result.get("resources")
@@ -128,7 +134,7 @@
     wait_condition:
       type: Initialized
       status: True
-    wait_timeout: 300
+    wait_timeout: 600
     wait_sleep: 30
     validate_certs: false
   register: _cuda_validator_result
@@ -146,7 +152,7 @@
     wait_condition:
       type: Initialized
       status: True
-    wait_timeout: 300
+    wait_timeout: 600
     wait_sleep: 30
     validate_certs: false
   register: _device_plugin_validator_result
