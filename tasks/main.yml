@@ -3,7 +3,7 @@
   pip:
     name:
       - openshift>=0.6
-      - PyYAML >= 3.11
+      - PyYAML>=3.11
     state: present
 
 # For all K8s tasks use an IP address to so that they work even if there's no DNS entry.
