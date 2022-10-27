@@ -63,7 +63,7 @@
     host: "https://{{ openshift_api_vip }}:6443"
     kubeconfig: "{{ kubeconfig }}"
     state: present
-    resource_definition: "{{ lookup('template', role_path + '/files/gpu-operator.yaml.j2') }}"
+    resource_definition: "{{ lookup('template', role_path + '/templates/gpu-operator.yaml.j2') }}"
     validate_certs: false
 
 - name: Set NGC pull secret auth
@@ -78,7 +78,7 @@
     host: "https://{{ openshift_api_vip }}:6443"
     kubeconfig: "{{ kubeconfig }}"
     state: present
-    resource_definition: "{{ lookup('template', role_path + '/files/ngc-secret.yaml.j2') }}"
+    resource_definition: "{{ lookup('template', role_path + '/templates/ngc-secret.yaml.j2') }}"
     validate_certs: false
   when: gpu_type == "vgpu"
 
@@ -87,7 +87,7 @@
     host: "https://{{ openshift_api_vip }}:6443"
     kubeconfig: "{{ kubeconfig }}"
     state: present
-    resource_definition: "{{ lookup('template', role_path + '/files/licensing-config.yaml.j2') }}"
+    resource_definition: "{{ lookup('template', role_path + '/templates/licensing-config.yaml.j2') }}"
     validate_certs: false
   when: gpu_type == "vgpu"
 
