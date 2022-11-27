@@ -37,6 +37,7 @@ Install the role using a _requirements.yml_ file:
 roles:
   - name: empovit.gpu_operator
     src: https://github.com/empovit/ansible-gpu-operator
+    version: <branch or release tag>
 ```
 
 by running `ansible-galaxy install -r requirements.yml`
