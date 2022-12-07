@@ -1,2 +1,4 @@
 gpu_operator_channel: v1.10
+vgpu_guest_driver_version: 510.47.03
+vgpu_guest_drive_image: vgpu-guest-driver-2-0
 gpu_type: gpu

@@ -113,7 +113,7 @@
     host: "https://{{ openshift_api_vip }}:6443"
     kubeconfig: "{{ kubeconfig }}"
     state: present
-    resource_definition: "{{ lookup('file', role_path + '/files/gpu-cluster-policy-' + gpu_type + '.yaml') }}"
+    resource_definition: "{{ lookup('template', role_path + '/templates/gpu-cluster-policy-' + gpu_type + '.yaml.j2') }}"
     validate_certs: false
 
 - name: Wait for at least one node to have (v)GPU
