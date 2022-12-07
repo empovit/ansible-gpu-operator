@@ -72,9 +72,9 @@ A cluster with a vGPU:
               ngc_api_key: V9t7QwTRzzCMALzGFI435ktA0pRQl53m8wp8v7MqYhz8JcLgF6JIB2HqZeYc
               ngc_email: totoro@example.com
               nls_client_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQ1Njc4OTAiLCJuYW1lIjoiVG90b3JvIiwicm9sZSI6IkdQVSBPcGVyYXRvciJ9.jufu49sz7Q2r2d95MZgj-HUXkQRg_PY6UjLay8CX3wA
-              gpu_operator_channel: v1.11
-              vgpu_guest_driver_version: 520.61.05
-              vgpu_guest_drive_image: data-center-driver-2-3
+              gpu_operator_channel: v22.9
+              vgpu_guest_driver_version: "510.85.02"
+              vgpu_guest_drive_image: vgpu-guest-driver-2-2
 ```
 
 License
