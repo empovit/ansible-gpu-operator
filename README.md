@@ -18,14 +18,17 @@ Role Variables
 
 Parameter | Description | Required | Default Value
 ----|----|----|----
-gpu_type              | Physical (`gpu`) or virtual (`vgpu`) GPU | Optional | `gpu`
-gpu_operator_channel  | Channel to install the GPU Operator from | Optional | `v1.10`
-openshift_api_vip     | API VIP or DNS name of the OpenShift cluster you want to install the GPU Operator on, must be reachable from the machine that runs the role | Required
-kubeconfig            | Full path to a kubeconfig file, including the file name | Required
-ngc_api_key           | NVIDIA NGC catalog API key for pulling driver and operator images | Required when `gpu_type` is `vgpu`
-ngc_email             | Email address used with NVIDIA NGC catalog | Required when `gpu_type` is `vgpu`
-nls_client_token      | NVIDIA license system (NLS) token for vGPU guest driver | Required when `gpu_type` is `vgpu`
+gpu_type                  | Physical (`gpu`) or virtual (`vgpu`) GPU | Optional | `gpu`
+gpu_operator_channel      | Channel to install the GPU Operator from | Optional | `v1.10`
+vgpu_guest_driver_version | vGPU guest driver version                | Optional | `510.47.03`
+vgpu_guest_drive_image    | vGPU guest driver image                  | Optional | `vgpu-guest-driver-2-0`
+openshift_api_vip     | API VIP or DNS name of the OpenShift cluster you want to install the GPU Operator on, must be reachable from the machine that runs the role | Required | -
+kubeconfig            | Full path to a kubeconfig file, including the file name | Required | -
+ngc_api_key           | NVIDIA NGC catalog API key for pulling driver and operator images | Required when `gpu_type` is `vgpu` | -
+ngc_email             | Email address used with NVIDIA NGC catalog | Required when `gpu_type` is `vgpu` | -
+nls_client_token      | NVIDIA license system (NLS) token for vGPU guest driver | Required when `gpu_type` is `vgpu` | -
 
+Check out [NVIDIA AI Enterprise with OpenShift - Create the ClusterPolicy Instance](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/openshift/nvaie-with-ocp.html#create-the-clusterpolicy-instance) for the right vGPU driver values for you OpenShift version.
 
 Installing
 ----------------
@@ -69,6 +72,9 @@ A cluster with a vGPU:
               ngc_api_key: V9t7QwTRzzCMALzGFI435ktA0pRQl53m8wp8v7MqYhz8JcLgF6JIB2HqZeYc
               ngc_email: totoro@example.com
               nls_client_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQ1Njc4OTAiLCJuYW1lIjoiVG90b3JvIiwicm9sZSI6IkdQVSBPcGVyYXRvciJ9.jufu49sz7Q2r2d95MZgj-HUXkQRg_PY6UjLay8CX3wA
+              gpu_operator_channel: v1.11
+              vgpu_guest_driver_version: 520.61.05
+              vgpu_guest_drive_image: data-center-driver-2-3
 ```
 
 License
