@@ -1,4 +1,5 @@
-gpu_operator_channel: v1.10
+gpu_operator_channel: v22.9
 vgpu_guest_driver_version: 510.47.03
 vgpu_guest_drive_image: vgpu-guest-driver-2-0
 gpu_type: gpu
+openshift_version: v4.12
