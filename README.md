@@ -19,7 +19,7 @@ Role Variables
 Parameter | Description | Required | Default Value
 ----|----|----|----
 gpu_type                  | Physical (`gpu`) or virtual (`vgpu`) GPU | Optional | `gpu`
-gpu_operator_channel      | Channel to install the GPU Operator from | Optional | `v1.10`
+gpu_operator_channel      | Channel to install the GPU Operator from | Optional | `v22.9`
 vgpu_guest_driver_version | vGPU guest driver version                | Optional | `510.47.03`
 vgpu_guest_drive_image    | vGPU guest driver image                  | Optional | `vgpu-guest-driver-2-0`
 openshift_api_vip     | API VIP or DNS name of the OpenShift cluster you want to install the GPU Operator on, must be reachable from the machine that runs the role | Required | -
@@ -27,6 +27,7 @@ kubeconfig            | Full path to a kubeconfig file, including the file name 
 ngc_api_key           | NVIDIA NGC catalog API key for pulling driver and operator images | Required when `gpu_type` is `vgpu` | -
 ngc_email             | Email address used with NVIDIA NGC catalog | Required when `gpu_type` is `vgpu` | -
 nls_client_token      | NVIDIA license system (NLS) token for vGPU guest driver | Required when `gpu_type` is `vgpu` | -
+openshift_version     | OpenShift version | Optional | `v4.12`
 
 Check out [NVIDIA AI Enterprise with OpenShift - Create the ClusterPolicy Instance](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/openshift/nvaie-with-ocp.html#create-the-clusterpolicy-instance) for the right vGPU driver values for you OpenShift version.
 
@@ -75,6 +76,7 @@ A cluster with a vGPU:
               gpu_operator_channel: v22.9
               vgpu_guest_driver_version: "510.85.02"
               vgpu_guest_drive_image: vgpu-guest-driver-2-2
+              openshift_version: v4.12
 ```
 
 License

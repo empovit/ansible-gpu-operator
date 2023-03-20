@@ -9,6 +9,8 @@ spec:
   operand:
     namespace: openshift-nfd
     servicePort: 12000
+    image: registry.redhat.io/openshift4/ose-node-feature-discovery:{{ openshift_version }}
+    imagePullPolicy: Always
   workerConfig:
     configData: |
       core:
@@ -20,3 +22,4 @@ spec:
             - "03"
             - "12"
           deviceLabelFields:
+            - "class"

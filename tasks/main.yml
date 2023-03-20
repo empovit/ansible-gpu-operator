@@ -39,7 +39,7 @@
     host: "https://{{ openshift_api_vip }}:6443"
     kubeconfig: "{{ kubeconfig }}"
     state: present
-    resource_definition: "{{ lookup('file', role_path + '/files/nfd-instance.yaml') }}"
+    resource_definition: "{{ lookup('template', role_path + '/templates/nfd-instance.yaml.j2') }}"
     validate_certs: false
 
 - name: Wait for NFD instance to become available
