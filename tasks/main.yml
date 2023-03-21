@@ -42,21 +42,37 @@
     resource_definition: "{{ lookup('template', role_path + '/templates/nfd-instance.yaml.j2') }}"
     validate_certs: false
 
-- name: Wait for NFD instance to become available
+- name: Wait for NFD master deployment to become available
   kubernetes.core.k8s_info:
     host: "https://{{ openshift_api_vip }}:6443"
     kubeconfig: "{{ kubeconfig }}"
-    kind: NodeFeatureDiscovery
+    kind: Deployment
     namespace: openshift-nfd
+    name: nfd-master
     wait: true
     wait_condition:
       type: Available
       status: "True"
+      reason: MinimumReplicasAvailable
     wait_timeout: 600
     wait_sleep: 30
     validate_certs: false
-  register: _nfd_instance_result
-  failed_when: not _nfd_instance_result.get("resources")
+  register: _nfd_master_deployment_result
+  failed_when: not _nfd_master_deployment_result.get("resources")
+
+- name: Wait for NFD worker daemon set to become available
+  kubernetes.core.k8s_info:
+    host: "https://{{ openshift_api_vip }}:6443"
+    kubeconfig: "{{ kubeconfig }}"
+    kind: DaemonSet
+    namespace: openshift-nfd
+    name: nfd-worker
+    validate_certs: false
+  register: _nfd_worker_daemonset_result
+  until: _nfd_worker_daemonset_result.resources[0].status.desiredNumberScheduled <= _nfd_worker_daemonset_result.resources[0].status.numberReady
+  failed_when: not _nfd_worker_daemonset_result.get("resources")
+  retries: 20
+  delay: 30
 
 - name: Install GPU operator
   kubernetes.core.k8s:
