@@ -141,6 +141,7 @@
     label_selectors: "nvidia.com/{{ gpu_type }}.present=true"
   register: gpu_nodes
   until: gpu_nodes.resources | length > 0
+  when: wait_for_gpu_node | bool
   retries: 15
   delay: 60
 
@@ -160,6 +161,7 @@
     wait_sleep: 30
     validate_certs: false
   register: _cuda_validator_result
+  when: wait_for_gpu_node | bool
   failed_when: not _cuda_validator_result.get("resources")
 
 - name: Wait for device plugin validator to complete
@@ -178,4 +180,5 @@
     wait_sleep: 30
     validate_certs: false
   register: _device_plugin_validator_result
+  when: wait_for_gpu_node | bool
   failed_when: not _device_plugin_validator_result.get("resources")

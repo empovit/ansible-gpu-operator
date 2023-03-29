@@ -40,3 +40,9 @@ argument_specs:
         type: "str"
         required: false
         description: "NVIDIA license system (NLS) token for vGPU guest driver"
+
+      wait_for_gpu_node:
+        type: "bool"
+        required: false
+        default: true
+        description: "Whether to wait for GPU nodes to be present. Useful for deploying auto-scalable clusters with 0 initial GPUs"
